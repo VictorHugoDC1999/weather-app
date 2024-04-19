@@ -1,6 +1,5 @@
-import 'tailwindcss/tailwind.css';
-import HomeWeather from '../components/Weather';
+import HomeWeather from '@/components/Weather';
 
 export default function Home() {
-  return <HomeWeather />
+  return <HomeWeather />;
 }
