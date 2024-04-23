@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={mainFontFamily.className}>
-      <body>{children}</body>
+      <body className="sm:text-xs">{children}</body>
     </html>
   );
 }
