@@ -1,5 +1,5 @@
-import HomeWeather from '@/components/Weather';
+import Weather from '@/components/Weather';
 
 export default function Home() {
-  return <HomeWeather />;
+  return <Weather />;
 }

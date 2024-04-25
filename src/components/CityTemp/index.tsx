@@ -1,4 +1,7 @@
+import { useWeather } from '@/data/hooks/useWeather';
 import IconTemp from '../IconTemp';
+
+
 const CityTemp = () => {
   return (
     <div className="flex justify-center items-center sx:flex-col">

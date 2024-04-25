@@ -1,6 +1,12 @@
+'use client';
+
+import { useProcessing } from '@/data/hooks/useProcessing';
+import { useWeather } from '@/data/hooks/useWeather';
 import { IoSearch } from 'react-icons/io5';
 
 const Panel = () => {
+  const { fetchWeatherData, processing } = useWeather();
+
   return (
     <div className="absolute w-2/5 h-full top-0 right-0 bg-[rgba(110,110,110,0.25)] shadow-black	backdrop-blur-md	border-[1px] divide-solid border-white/20 z-10 py-10 px-8 overflow-y-scroll md:relative md:w-full">
       {/* Location Input */}
@@ -11,8 +17,8 @@ const Panel = () => {
           placeholder="Search Location"
         />
         <button
+          onClick={fetchWeatherData}
           className="absolute top-0 right-0 p-7 border-none outline-none bg-orange-500 text-white cursor-pointer text-2xl duration-500 hover:bg-white hover:text-black sx:text-lg"
-          type="submit"
         >
           <IoSearch />
         </button>
