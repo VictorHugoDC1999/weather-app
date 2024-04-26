@@ -2,6 +2,8 @@
 
 import { useWeather } from '@/data/hooks/useWeather';
 import { Form } from '../Form';
+import { Cities } from '../Cities';
+import { Details } from '../Details';
 
 const Panel = () => {
   const { fetchWeatherData, processing } = useWeather();
@@ -12,39 +14,10 @@ const Panel = () => {
       <Form />
 
       {/* Cities */}
-      <ul className="pt-0 pl-0 pb-4 pr-0 my-8 mx-0 border-b-[1px] border-slate-100">
-        <li className="text-slate-100 my-10 mx-0 block cursor-pointer duration-500 hover:text-white">
-          New York
-        </li>
-        <li className="text-slate-100 my-10 mx-0 block cursor-pointer duration-500 hover:text-white">
-          California
-        </li>
-        <li className="text-slate-100 my-10 mx-0 block cursor-pointer duration-500 hover:text-white">
-          Paris
-        </li>
-        <li className="text-slate-100 my-10 mx-0 block cursor-pointer duration-500 hover:text-white">
-          Tokyo
-        </li>
-      </ul>
+      <Cities />
 
       {/* Details */}
-      <ul className="pt-0 pl-0 pb-4 pr-0 my-8 mx-0 border-b-[1px] border-slate-100">
-        <h4 className="my-12 mx-0">Weather Details</h4>
-        <li className="text-slate-100 my-10 mx-0 flex justify-between items-center">
-          <span>Cloudy</span>
-          <span>89%</span>
-        </li>
-
-        <li className="text-slate-100 my-10 mx-0 flex justify-between items-center">
-          <span>Humidity</span>
-          <span>64%</span>
-        </li>
-
-        <li className="text-slate-100 my-10 mx-0 flex justify-between items-center">
-          <span>Wind</span>
-          <span>8km/h</span>
-        </li>
-      </ul>
+      <Details />
     </div>
   );
 };
