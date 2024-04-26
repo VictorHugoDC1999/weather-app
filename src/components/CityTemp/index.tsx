@@ -1,6 +1,7 @@
+'use-client';
+
 import { useWeather } from '@/data/hooks/useWeather';
 import IconTemp from '../IconTemp';
-
 
 const CityTemp = () => {
   return (

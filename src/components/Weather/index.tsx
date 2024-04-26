@@ -4,9 +4,13 @@ import { useWeather } from '@/data/hooks/useWeather';
 import BackgroundImage from '../BackgroundImage';
 import CityTemp from '../CityTemp';
 import Panel from '../Panel';
+import { useEffect } from 'react';
 
 const Weather = () => {
   const { fetchWeatherData, processing } = useWeather();
+  useEffect(() => {
+    fetchWeatherData();
+  }, []);
 
   return (
     <div

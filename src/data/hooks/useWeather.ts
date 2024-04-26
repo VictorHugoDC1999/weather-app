@@ -1,16 +1,17 @@
+'use-client';
+
 import { useProcessing } from '@/data/hooks/useProcessing';
 import { useState } from 'react';
 
 export const useWeather = () => {
   const { processing, startProcessing, finishProcessing } = useProcessing();
   const [data, setData] = useState<any>();
+  const [cityInput, setCityInput] = useState<string>('London');
 
-  const cityInput = 'London';
-
-  async function fetchWeatherData(event: any) {
+  async function fetchWeatherData() {
     try {
       startProcessing();
-      event.preventDefault();
+      // event.preventDefault();
       const resp = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
           cityInput
@@ -18,7 +19,8 @@ export const useWeather = () => {
       );
       const dataWeather = await resp.json();
       setData(dataWeather);
-      if (data.cod === 200) {
+
+      if (dataWeather.cod === 200) {
         console.log(dataWeather);
       }
     } catch {
@@ -28,5 +30,5 @@ export const useWeather = () => {
     }
   }
 
-  return { fetchWeatherData, processing, data };
+  return { fetchWeatherData, processing, data, cityInput, setCityInput };
 };
