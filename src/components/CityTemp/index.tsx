@@ -2,12 +2,20 @@
 
 import { useWeather } from '@/data/hooks/useWeather';
 import IconTemp from '../IconTemp';
+import { useState, useEffect } from 'react';
 
 const CityTemp = () => {
+  const { data } = useWeather();
+  const [cityTime, setCityTime] = useState(28);
+
+  // useEffect(() => {
+  //   setCityTime(data.main.temp);
+  // }, []);
+
   return (
     <div className="flex justify-center items-center sx:flex-col">
       {/* Temp */}
-      <h1 className="m-0 text-8xl font-normal sx:mb-6">28&#176;</h1>
+      <h1 className="m-0 text-8xl font-normal sx:mb-6">{cityTime}&#176;</h1>
       {/* City Name */}
       <div className="flex justify-center items-center flex-col my-0 mx-4">
         <h1 className="m-0 mb-4 font-normal text-5xl">London</h1>

@@ -7,15 +7,24 @@ import Panel from '../Panel';
 import { useEffect } from 'react';
 
 const Weather = () => {
-  const { fetchWeatherData, processing } = useWeather();
+  const { fetchWeatherData, processing, data, setData, cityInput } =
+    useWeather();
+
   useEffect(() => {
-    fetchWeatherData();
-  }, []);
+    fetchWeatherData().then(response => {
+      if (response.cod === 200) {
+        setData(response);
+        console.log();
+      }
+
+      // console.log(response.main.temp);
+    });
+  }, [cityInput]);
 
   return (
     <div
       className={`text-stone-50 sx:min-h-28 ${
-        processing ? 'opacity-100' : 'opacity-100'
+        processing ? 'opacity-0' : 'opacity-100'
       }`}
     >
       <BackgroundImage />

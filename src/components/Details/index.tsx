@@ -1,6 +1,9 @@
 import { WeatherDetails } from '../WeatherDetails';
+import { useWeather } from '../../data/hooks/useWeather';
 
 export const Details = () => {
+  const { data } = useWeather();
+
   // Details
   return (
     <ul className="pt-0 pl-0 pb-4 pr-0 my-8 mx-0 border-b-[1px] border-slate-100">
