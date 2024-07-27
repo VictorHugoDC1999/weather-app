@@ -14,12 +14,13 @@ const Weather = () => {
     fetchWeatherData().then(response => {
       if (response.cod === 200) {
         setData(response);
-        console.log();
       }
-
-      // console.log(response.main.temp);
     });
   }, [cityInput]);
+
+  if (!data || !data.main) {
+    return <></>;
+  }
 
   return (
     <div
@@ -33,9 +34,9 @@ const Weather = () => {
         <h3 className="font-normal text-base md:relative md:w-full">
           the weather
         </h3>
-        <CityTemp />
+        <CityTemp weather={data} />
       </div>
-      <Panel />
+      <Panel weather={data} />
     </div>
   );
 };

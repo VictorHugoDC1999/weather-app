@@ -1,7 +1,7 @@
 'use-client';
 
 import { useProcessing } from '@/data/hooks/useProcessing';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 interface PropsWeather {
   cod: number;
@@ -22,29 +22,24 @@ interface PropsWeather {
 
 export const useWeather = () => {
   const { processing, startProcessing, finishProcessing } = useProcessing();
-  const [data, setData] = useState<PropsWeather[]>([]);
+  const [data, setData] = useState();
   const [cityInput, setCityInput] = useState<string>('London');
-  // const hasFetched = useRef(false);
 
   const fetchWeatherData = useCallback(
     async function () {
       console.log('fetchedWeatherData called');
+      console.log(data);
       
-      // if (hasFetched.current) return;
-      // hasFetched.current = true;
+
       try {
         startProcessing();
-        // event.preventDefault();
+        const key = 'd06cdb298fafc83c520d5ab677fc477e';
         const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
           cityInput
-        )}&units=metric&lang=pt_br&appid=d06cdb298fafc83c520d5ab677fc477e`;
+        )}&units=metric&lang=pt_br&appid=${key}`;
         const resp = await fetch(apiURL);
         const dataWeather = await resp.json();
         return dataWeather;
-        // console.log(dataWeather.cod);
-
-        // console.log(data);
-        
 
         // if (dataWeather.cod === 200) {
         //   setData(currentData => (currentData = dataWeather));
@@ -62,6 +57,12 @@ export const useWeather = () => {
     [startProcessing, finishProcessing]
   );
 
-
-  return { fetchWeatherData, processing, data, setData, cityInput, setCityInput };
+  return {
+    fetchWeatherData,
+    processing,
+    data,
+    setData,
+    cityInput,
+    setCityInput
+  };
 };
