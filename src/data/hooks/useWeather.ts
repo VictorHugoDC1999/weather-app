@@ -27,9 +27,7 @@ export const useWeather = () => {
 
   const fetchWeatherData = useCallback(
     async function () {
-      console.log('fetchedWeatherData called');
-      console.log(data);
-      
+      // console.log('fetchedWeatherData called');
 
       try {
         startProcessing();

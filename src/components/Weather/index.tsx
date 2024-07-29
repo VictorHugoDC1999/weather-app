@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 const Weather = () => {
   const { fetchWeatherData, processing, data, setData, cityInput } =
     useWeather();
+  // console.log(data);
 
   useEffect(() => {
     fetchWeatherData().then(response => {
