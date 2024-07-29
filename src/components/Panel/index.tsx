@@ -1,6 +1,6 @@
 'use client';
 
-import { useWeather } from '@/data/hooks/useWeather';
+import useWeather  from '@/data/hooks/useWeather';
 import { Form } from '../Form';
 import { Cities } from '../Cities';
 import { Details } from '../Details';
